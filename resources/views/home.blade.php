@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="title">
-        Contact Page
+        Home Page
     </x-slot>
 
-    <h1>Hello from the Contact Page.</h1>
+    <h1>Hello from the Home Page.</h1>
 </x-layout>
