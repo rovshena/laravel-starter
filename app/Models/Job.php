@@ -13,26 +13,26 @@ class Job
             [
                 'id' => 1,
                 'title' => 'Director',
-                'salary' => '$50,000'
+                'salary' => '$50,000',
             ],
             [
                 'id' => 2,
                 'title' => 'Programmer',
-                'salary' => '$10,000'
+                'salary' => '$10,000',
             ],
             [
                 'id' => 3,
                 'title' => 'Teacher',
-                'salary' => '$40,000'
-            ]
+                'salary' => '$40,000',
+            ],
         ];
     }
 
     public static function find(int $id): array
     {
-        $job = Arr::first(static::all(), fn($job) => $job['id'] == $id);
+        $job = Arr::first(static::all(), fn ($job) => $job['id'] == $id);
 
-        if (!$job) {
+        if (! $job) {
             abort(Response::HTTP_NOT_FOUND);
         }
 
