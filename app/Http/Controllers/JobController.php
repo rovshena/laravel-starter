@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Mail\JobPosted;
 use App\Models\Job;
+use Mail;
 
 class JobController extends Controller
 {
@@ -23,11 +25,13 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        Job::create([
+        $job = Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
             'employer_id' => 1,
         ]);
+
+        Mail::to('rovshen.dev@gmail.com')->send(new JobPosted($job));
 
         return redirect()->route('jobs.index');
     }
