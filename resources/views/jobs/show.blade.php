@@ -9,7 +9,9 @@
         This job pays {{ $job['salary'] }} per year.
     </p>
 
-    <p class="mt-6">
-        <x-button href="{{ route('jobs.edit', $job) }}">Edit Job</x-button>
-    </p>
+    @can('update', $job)
+        <p class="mt-6">
+            <x-button href="{{ route('jobs.edit', $job) }}">Edit Job</x-button>
+        </p>
+    @endcan
 </x-layout>

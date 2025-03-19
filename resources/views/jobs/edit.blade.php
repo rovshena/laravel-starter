@@ -6,7 +6,7 @@
     <form method="POST" action="{{ route('jobs.update', $job) }}"
           class="border border-gray-200 p-4 rounded-lg shadow-sm bg-white">
         @csrf
-        @method('PATCH')
+        @method('PUT')
 
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
