@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
+use App\Models\User;
+use Auth;
 
 class RegisteredUserController extends Controller
 {
@@ -15,6 +17,10 @@ class RegisteredUserController extends Controller
     {
         $attributes = $request->validated();
 
-        dd($attributes);
+        $user = User::create($attributes);
+
+        Auth::login($user);
+
+        return redirect('/jobs');
     }
 }

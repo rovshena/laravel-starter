@@ -19,7 +19,7 @@
                                 name="title"
                                 id="title"
                                 placeholder="Shift Leader"
-                                value="{{ old('title', $job->title) }}"
+                                :value="old('title', $job->title)"
                                 required
                             />
                             <x-form-error name="title"/>
@@ -33,7 +33,7 @@
                                 name="salary"
                                 id="salary"
                                 placeholder="50000 USD per year"
-                                value="{{ old('salary', $job->salary) }}"
+                                :value="old('salary', $job->salary)"
                                 required
                             />
                             <x-form-error name="salary"/>

@@ -18,7 +18,7 @@
                                 name="email"
                                 id="email"
                                 placeholder="john@example.com"
-                                value="{{ old('email', '') }}"
+                                :value="old('email')"
                                 required
                             />
                             <x-form-error name="email"/>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
+use Auth;
 
 class SessionController extends Controller
 {
@@ -15,6 +16,21 @@ class SessionController extends Controller
     {
         $attributes = $request->validated();
 
-        dd($attributes);
+        if (! Auth::attempt($attributes)) {
+            return back()
+                ->withErrors(['email' => 'The provided credentials do not match our records.'])
+                ->withInput(['email' => $attributes['email']]);
+        }
+
+        $request->session()->regenerate();
+
+        return redirect('/jobs');
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

@@ -18,7 +18,7 @@
                                 name="name"
                                 id="name"
                                 placeholder="John Doe"
-                                value="{{ old('name', '') }}"
+                                :value="old('name')"
                                 required
                             />
                             <x-form-error name="name"/>
@@ -32,7 +32,7 @@
                                 name="email"
                                 id="email"
                                 placeholder="john@example.com"
-                                value="{{ old('email', '') }}"
+                                :value="old('email')"
                                 required
                             />
                             <x-form-error name="email"/>
