@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Jobs\TranslateJob;
 use App\Mail\JobPosted;
 use App\Models\Job;
 use Mail;
@@ -31,7 +32,9 @@ class JobController extends Controller
             'employer_id' => 1,
         ]);
 
-        Mail::to('rovshen.dev@gmail.com')->send(new JobPosted($job));
+        TranslateJob::dispatch($job);
+
+        Mail::to('rovshen.dev@gmail.com')->queue(new JobPosted($job));
 
         return redirect()->route('jobs.index');
     }
